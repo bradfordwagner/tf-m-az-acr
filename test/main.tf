@@ -7,9 +7,7 @@ terraform {
   }
 }
 
-provider "azurerm" {
-
-}
+provider "azurerm" {}
 
 module "test_module" {
   source = "../"
