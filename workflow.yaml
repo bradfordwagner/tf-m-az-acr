@@ -39,9 +39,9 @@ spec:
           - name: vault_issue_token
             value: false
           - name: csi_class
-            value: ""
+            value: sp-infra
           - name: csi_secret
-            value: ""
+            value: sp-infra
         templateRef:
           name: flavor-terraform-module-template
           template: main
