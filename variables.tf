@@ -1,5 +1,6 @@
 variable "name" {
   type = string
+  description = "alphanumeric only"
 }
 
 variable "resource_group_name" {
@@ -10,11 +11,7 @@ variable "region" {
   default = "eastus2"
 }
 
-variable "georeplication_region" {
-  default = "eastus"
-}
-
 variable "sku" {
   default = "Standard"
-  description = "Basic|Standard|Premium"
+  description = "Basic|Standard"
 }
