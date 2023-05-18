@@ -12,7 +12,7 @@ import (
 func TestTerraformBasicExample(t *testing.T) {
 	t.Parallel()
 
-	name := fmt.Sprintf("test-tf-m-az-acr-%d", rand.Intn(10000))
+	name := fmt.Sprintf("bwtestacr%d", rand.Intn(10000))
 	resourceGroupName := fmt.Sprintf("test-rg-%d", rand.Intn(10000))
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// website::tag::1::Set the path to the Terraform code that will be tested.
