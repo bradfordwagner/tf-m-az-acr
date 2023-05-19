@@ -1,17 +1,19 @@
 package test
 
 import (
+	"fmt"
+	"math/rand"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/stretchr/testify/assert"
 )
 
 // An example of how to test the simple Terraform module in examples/terraform-basic-example using Terratest.
 func TestTerraformBasicExample(t *testing.T) {
 	t.Parallel()
 
-	expectedText := "hello world"
+	name := fmt.Sprintf("bwtestacr%d", rand.Intn(10000))
+	resourceGroupName := fmt.Sprintf("test-rg-%d", rand.Intn(10000))
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// website::tag::1::Set the path to the Terraform code that will be tested.
 		// The path to where our Terraform code is located
@@ -20,7 +22,8 @@ func TestTerraformBasicExample(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"input": expectedText,
+			"name": name,
+			"resource_group_name": resourceGroupName,
 		},
 
 		// Variables to pass to our Terraform code using -var-file options
@@ -37,11 +40,4 @@ func TestTerraformBasicExample(t *testing.T) {
 	// website::tag::2::Run "terraform init" and "terraform apply".
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
-
-	// Run `terraform output` to get the values of output variables
-	actualTextExample := terraform.Output(t, terraformOptions, "hello_world")
-
-	// website::tag::3::Check the output against expected values.
-	// Verify we're getting back the outputs we expect
-	assert.Equal(t, expectedText, actualTextExample)
 }
