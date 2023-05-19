@@ -15,3 +15,7 @@ variable "sku" {
   default = "Standard"
   description = "Basic|Standard"
 }
+
+variable "admin_enabled" {
+  default = false
+}
