@@ -1,5 +1,5 @@
 variable "name" {
-  type = string
+  type        = string
   description = "alphanumeric only"
 }
 
@@ -12,10 +12,14 @@ variable "region" {
 }
 
 variable "sku" {
-  default = "Standard"
+  default     = "Standard"
   description = "Basic|Standard"
 }
 
 variable "admin_enabled" {
+  default = false
+}
+
+variable "anonymous_pull_enabled" {
   default = false
 }
